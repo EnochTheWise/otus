@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e4r5t
+    volumes:
+      - /srv/pgsql-13:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
