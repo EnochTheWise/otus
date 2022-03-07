@@ -1,0 +1,17 @@
+services:
+  otusdb:
+    image: mysql:8.0.28
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_ROOT_PASSWORD: "1q2w3e4r5t"
+    command:
+      --authentication_policy=mysql_native_password
+      --innodb-buffer-pool-size=8G
+    volumes:
+      - /srv/mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/00-init.sql
+      - ./custom.conf:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"
+
